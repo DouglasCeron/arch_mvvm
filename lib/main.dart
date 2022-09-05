@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mvvm_flutter_app/view/screens/home_screen.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           appBarTheme: AppBarTheme(),
           primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
+          colorScheme: Theme.of(context).colorScheme,
         ),
         initialRoute: '/',
         routes: {

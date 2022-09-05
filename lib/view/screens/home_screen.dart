@@ -13,8 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   Widget getMediaWidget(BuildContext context, ApiResponse apiResponse) {
     List<Media>? mediaList = apiResponse.data as List<Media>?;
     switch (apiResponse.status) {
@@ -28,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 8,
               child: PlayerListWidget(mediaList!, (Media media) {
                 Provider.of<MediaViewModel>(context, listen: false)
-                .setSelectedMedia(media);
+                    .setSelectedMedia(media);
               }),
             ),
             Expanded(
@@ -74,7 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 20.0),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor.withAlpha(50),
+                      color:
+                          Theme.of(context).colorScheme.secondary.withAlpha(50),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: TextField(

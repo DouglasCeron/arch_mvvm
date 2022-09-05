@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_flutter_app/model/media.dart';
 import 'package:mvvm_flutter_app/view_model/media_view_model.dart';
 import 'package:provider/provider.dart';
 
 enum PlayerState { stopped, playing, paused }
+
 enum PlayingRouteState { speakers, earpiece }
 
 class PlayerWidget extends StatefulWidget {
@@ -86,13 +86,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 Icons.fast_rewind,
                 size: 25.0,
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Theme.of(context).accentColor
+                    ? Theme.of(context).colorScheme.secondary
                     : Color(0xFF787878),
               ),
             ),
             ClipOval(
                 child: Container(
-              color: Theme.of(context).accentColor.withAlpha(30),
+              color: Theme.of(context).colorScheme.secondary.withAlpha(30),
               width: 50.0,
               height: 50.0,
               child: IconButton(
@@ -110,7 +110,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 icon: Icon(
                   _isPlaying ? Icons.pause : Icons.play_arrow,
                   size: 30.0,
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
             )),
@@ -121,7 +121,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 Icons.fast_forward,
                 size: 25.0,
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Theme.of(context).accentColor
+                    ? Theme.of(context).colorScheme.secondary
                     : Color(0xFF787878),
               ),
             ),
@@ -143,7 +143,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                     value: (_position != null &&
                             _duration != null &&
                             _position!.inMilliseconds > 0 &&
-                            _position!.inMilliseconds < _duration!.inMilliseconds)
+                            _position!.inMilliseconds <
+                                _duration!.inMilliseconds)
                         ? _position!.inMilliseconds / _duration!.inMilliseconds
                         : 0.0,
                   ),
